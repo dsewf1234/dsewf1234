@@ -1,0 +1,25 @@
+10.29일 오늘을 base 쪽이 중요
+
+
+
+
+
+다양한 프로젝트가 존재를 하고 각 프로젝트마다 사용되는 라이브러리들이 다를 경우 라이브러리 버전들마다 다를 경우 호환이 안됩니다. ---->   가상환경르 사용합니다.
+
+
+
+가상 환경 사용하기 순서
+
+1. virtualenv 라이브러리 설치
+	- pip 명령을 토앻 라이브러리 설치 -> pip install virtualenv
+2. virtualenv 명령을 통한 가상환경 생성
+	- 가상환경 구축(디렉터리가 만들어짐) -> virtualenv 가상환경이름(자유)
+3. 가상환경 활성화
+	- 가상환경이름\Scripts\activate -> 활성화가 된다면(가상환경이름)      가상환경 들어가기 
+4. 활성화 상태에서 라이브러리(필요) 설치
+	- pip install 라이브러리(설치)
+	- pip install django pytz django-tagging django-disqus pillow
+5. 가상환경 내에서 프로젝트 개발
+
+6. deactive 명령어를 이요하여 가상환경 비활성화
+

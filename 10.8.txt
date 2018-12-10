@@ -1,0 +1,159 @@
+장고위치 user > django
+장고란?
+cd.. -->이전 폴더로 나가기
+
+
+pip install django
+단추키 ctral + c 다시 돌아옴 명령프롬프트로
+파이썬 주소
+http://127.0.0.1:8000        메인 사이트
+
+
+
+
+웹 프레임 워크
+visual studio code다운
+mkdir django 디렉토리
+cd django 가 들어가는 명령어
+python -m venv myvenv
+myvenv\Scripts\activate
+cd 폴더이름 --> 폴더들어가서
+
+
+cd 폴더이름
+start.                 시작 
+
+
+
+python manage.py migrate                데이터베이스에 변경사항이 있을 때 이를 반영해주는 명령어
+
+
+
+그리고
+
+d 폴더로 들어가기
+d:-
+장고 설치
+pip install django
+장고 프로젝트 만들기  
+django-admin startproject 프로젝트 이름                 -->프로젝트 만들기
+시작
+start.
+만든 폴더 들어가기
+폴더:
+python manage.py migrate                데이터베이스에 변경사항이 있을 때 이를 반영해주는 명령어
+계정 등록하기
+
+python manage.py makemigrations blog 생성
+                 migrate blog 들어가기
+
+
+
+python manage.py createsuperuser 관리자 생성 아이디 dsewf 비번12345           요기 아이디 비밀번호를 까먹을스 그냥 덮어서 명령어해서 새로 만들어주어도 적용이된다.
+
+python manage.py startapp bookmark   앱 실행 그리고 bookmark 폴더 생성
+만들었으면 	
+
+django-admin.py startproject mysite . -> editplus가 나옴하위 생성
+
+python manage.py runserver 서버시작 하는것?
+
+python manage.py startapp blog 앱 생성 blog폴더가 생성
+
+
+
+셋팅쪽 모델쪽 건들고 아래 명령어 실행해주면됩니다.
+python manage.py makemigrations                  적용하겠다.
+
+python manage.py migrate                         완료
+
+
+
+
+셋팅에 추가한건
+
+앱 생성후 본 파일
+settings.py 부분에 만든 어플리케이션 넣어줘야함
+
+'bookmark', 이렇게 끝에 컴마를 해야된다.
+
+
+28줄 ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com']
+TIME_ZONE = 'Asia/Seoul'
+ 마지막 다음 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+d: 드라이버로 들어감
+사이트 주소
+장고메인
+http://127.0.0.1:8000/admin
+뷰
+http://127.0.0.1:8000/bookmarks/
+
+9.11
+manage.py 사이트
+settings.py 웹사이트 설정
+
+blog.models.py
+from django.db import models
+from django.utils import timezone
+
+class Post(models.Model):
+    author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    title = models.CharField(max_length = 200)
+    text = models.TextField()
+    created_date = models.DateTimeField(default=timezone.now)
+    published_date = models.DateTimeField(blank=True, null=True)
+
+    def publish(self):
+        self.published_date = timezone.now()
+        self.save()
+    def __str__(self):
+        return self.title
+
+
+blog.admin.py
+from django.contrib import admin
+from .models import Post
+
+admin.site.register(Post)
+
+
+mysite.urls.py
+from django.conf.urls import include, url
+from django.contrib import admin
+
+urlpatterns = [
+    url(r'^admin/', admin.site.urls),
+    url(r'', include('blog.urls')),
+]
+
+
+blog에 파일 urls.py 추가하고
+from django.conf.urls import url
+from . import views
+
+urlpatterns = [
+    url(r'^$', views.post_list, name='post_list'),
+] views.post_list를 불러온다
+
+blog에 폴더 templates만들고 그안에폴더 blog 만들고 그안에 폴더 post_list.html만들기
+
+
+
+blog에 views.py
+from django.shortcuts import render
+
+def post_list(request):
+    return render(request, 'blog/post_list.html',{})
+
+post_list.html이 부분이
+사이트 화면에 나오는 부분이다
+html명령어를 사용해도된다.
+
+다음주는 템플릿과 뷰를 한다
+
+
+10.8
+user : lee123
+password : 12345
+
+model

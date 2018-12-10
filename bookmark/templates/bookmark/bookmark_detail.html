@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Django Bookmark Detail{% endblock %}
+{% load staticfiles %}
+{% block content %}
+<div id="content">
+
+        
+        
+
+    <h1>{{ object.title }}</h1>
+
+    <ul>
+            <img src="{% static 'img/asd.jpg' %}" style="height:256px;"/>
+        <li>URL: <a href="{{ object.url }}">{{ object.url }}</a></li>
+    </ul>
+</div>
+{% endblock %}
+<!-- base.html을 상속받로고 위에같이 작성이된다.-->
